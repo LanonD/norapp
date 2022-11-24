@@ -1,0 +1,25 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.nrapp.norapp"
+    },
+    "cordova-plugin-geolocation": {
+      "GPS_REQUIRED": "true",
+      "PACKAGE_NAME": "com.nrapp.norapp"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "com.nrapp.norapp"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "com.nrapp.norapp"
+    }
+  },
+  "dependent_plugins": {}
+}

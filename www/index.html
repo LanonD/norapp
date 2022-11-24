@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAfb3MRYco1aN4yaJyXmK8jperHTMJl07E&amp;libraries=places"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <script src="js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+        <title>Control de Usuarios</title>
+    </head>
+    <body style="background-color: black;">
+      <div class="btn-group" role="group" aria-label="Basic outlined example" id="cabecera" style="display: none; margin-left: 2%;">
+        <button type="button" class="btn btn-outline-primary" style="border-color: gray; color: gray;" onclick="regresar()">Inicio</button>
+        <button type="button" class="btn btn-outline-primary" style="border-color: gray; color: gray;" onclick="showAsist()">Asis</button>
+        <button type="button" class="btn btn-outline-primary" style="border-color: gray; color: gray;" onclick="showOp()">Ope</button>
+        <button type="button" class="btn btn-outline-primary" style="border-color: gray; color: gray;" onclick="showProd()">Prod</button>
+      </div><br>
+      <div id="login">
+      <br><br><br><br><br><br><br><br><br>
+            <label for="user_login" style="color: white;">Número de empleado: </label> <br> <input type="number" placeholder="Usuario" id="user_login" name="user_login"><br><br>
+            <label for="user_login" style="color: white;">Contraseña: </label> <br> <input type="password" placeholder="Password" id="user_pwd" name="user_pwd"><br><br>
+            <button id="Btn_login">Ingresar</button><br><br>
+            <button id="Btn_alta">Dar de alta</button><br><br>
+            <label for="" id="user_alta_label" name="user_alta_label" style="display: none;"></label>
+      </div>
+      <div id="profile">
+        <div style="display: flex;">
+          <div style="display: inline-block;">
+          <img src="" alt="" id="profile_photo" aling="top" style="width: 200px; height: 200px;"></div><div style="display: inline-block; padding-left: 2%;">
+          <label for="" style="color: white;">Bienvenido: </label><br><label for="nameop" id="nameop" style="color: white;"></label><br>
+        <label for="proyecto" style="color: white;">Proyecto: </label><label for="" id="proyecto" name="proyecto" style="color: white;"></label>
+        <h3 style="color: white;">Seleccionar:</h3>
+        <label for="tienda" style="color: white;">Tienda: </label>
+        <select name="tiendas" id="tiendas"  onchange="cacheTienda()" style="display: none;">
+          <option value="tezontle">Tezontle</option>
+          <option value="anfora">Anfora</option>
+          <option value="interlomas">Interlomas</option>
+          <option value="fortuna">Fortuna</option>
+          <option value="iztapalapa">Iztapalapa</option>
+          <option value="toreo">Toreo</option>
+          <option value="tepoztan">Tepoztan</option>
+          <option value="xochimilco">Xochimilco</option>
+          <option value="tepeyac">Tepeyac</option>
+          <option value="pedregal">Pedregal</option>
+          <option value="polanco">Polanco</option>
+          <option value="coapa">Coapa</option>
+          <option value="ajusco">Ajusco</option>
+          <option value="universidad">Universidad</option>
+          <option value="interlomas">Interlomas</option>
+          <option value="mundoe">Mundo E</option>
+          <option value="tenayuca">Tenayuca</option>
+          <option value="molina">Molina</option>
+          <option value="neza1">Estadio Neza</option>
+          <option value="ecatepec">Ecatepec</option>
+          <option value="animas">Animas</option>
+          <option value="tecamachalco">Tecamachalco</option>
+          <option value="santafe">Santa Fe</option>
+        </select>
+        <select name="tiendasw" id="tiendasw" onchange="cacheTiendaW()">
+          <option value="Coacalco">Coacalco</option>
+          <option value="Ecatepec">Ecatepec</option>
+          <option value="Texcoco">Texcoco</option>
+          <option value="Horizonte">Horizonte</option>
+          <option value="Oriente">Oriente</option>
+        </select><br><br>
+        <label>Equipo: </label>
+        <select name="equipos" id="equipos" onchange="cacheEquipo()">
+          <option value="Equipo 1">Equipo 1</option>
+          <option value="Equipo 2">Equipo 2</option>
+          <option value="Equipo 3">Equipo 3</option>
+          <option value="Equipo 4">Equipo 4</option>
+          <option value="Equipo 5">Equipo 5</option>
+          <option value="Equipo 6">Equipo 6</option>
+          <option value="Equipo 7">Equipo 7</option>
+          <option value="Equipo 8">Equipo 8</option>
+          <option value="Equipo 9">Equipo 9</option>
+          <option value="Equipo 10">Equipo 10</option>
+          <option value="Equipo 11">Equipo 11</option>
+          <option value="Equipo 12">Equipo 12</option>
+          <option value="Equipo 13">Equipo 13</option>
+          <option value="Equipo 14">Equipo 14</option>
+          <option value="Equipo 15">Equipo 15</option>
+        </select><br><br>
+        </div>
+      </div>
+        <div style="text-align: center;"><br><br>
+          <input type="button" id="checkconn"  value="Revisar mi conexión a internet"><br> <br>
+        <input type="button" id="closeSession"  value="Cerrar sesión"><br> <br>
+      </div>
+      </div>
+      <div id="foto_evidencia" style="display: none;background-image: url('img/pantalla3.png');background-repeat: no-repeat;
+      background-size: 100% 100%;">
+      <img src="" alt="" id="myImage" name="myImage">
+        <br> <br>
+        <button id="verificar">Verificar No. de evidencia</button><br>
+        <label for="" style="color: white;">Nombre de quien hizo el registro: </label><label for="nameregistro" id="nameregistro" style="color: white;"></label><br>
+        <label for="" style="color: white;">Fecha del registro: </label><label for="fregistro" id="fregistro" style="color: white;"></label><br>
+        <label for="" style="color: white;">Hora del registro: </label><label for="hregistro" id="hregistro" style="color: white;"></label><br>
+        <label for="" style="color: white;">Tienda: </label><label for="tregistro" id="tregistro" style="color: white;"></label><br>
+        <label for="" style="color: white;">Folio del registro: </label><label for="foregistro" id="foregistro" style="color: white;"></label><br> <br>
+        <label for="appt" style="color: white;">Hora del slot: </label>
+        <select name="appt" id="appt">
+          <option value="8:00 am">8:00 am</option>
+          <option value="10:00 am">10:00 am</option>
+          <option value="12:00 pm">12:00 pm</option>
+          <option value="02:00 pm">02:00 pm</option>
+          <option value="04:00 pm">04:00 pm</option>
+          <option value="06:00 pm">06:00 pm</option>
+          <option value="08:00 pm">08:00 pm</option>
+        </select> <br> <br>
+        <input type="button" onclick="hacerFoto3();"  value="Tomar foto de evidencia firmada"> <br> <br>
+        <img id="fotoLocal3" src="" width="100px" height="100px"><br>
+        <img id="fotoLocalServer3" src="" style="display: none;">
+        <input type="button" onclick="subirImagen3();"  value="Registrar foto de evidencia"> <br> <br>
+        <button id="regresar">Regresar</button><br>
+      </div>
+      <div id="asistencia">
+        <img id="fotoLocal" src="" width="150px" height="150px">
+        <img id="fotoLocalServer" src="" style="display: none;">
+                <label for="" id="ubi" name="ubi" style="display: none;"></label>
+                <button type="button" class="btn btn-success" onclick="hacerFoto();">Inicio de jornada</button><br><br>
+                <img id="fotoLocalN" src="" width="150px" height="150px">
+                <img id="fotoLocalServerN" src="" style="display: none;"> 
+                <button type="button" class="btn btn-success" onclick="hacerFotoNosotros();">Registro llegada</button><br><br>
+              <img id="fotoLocal2" src="" width="150px" height="150px">
+              <img id="fotoLocalServer2" src="" style="display: none;"> 
+                <button type="button" class="btn btn-success" onclick="hacerFoto2();">Fin de jornada</button>
+      </div>
+      <div id="operacion">
+        <br>
+        <br>
+        
+        <button type="button" class="btn btn-primary btn-lg" id="btn_picker">Picker</button>
+        <button type="button" class="btn btn-secondary btn-lg" id="btn_repartidor">Repartidor</button>
+        <br>
+        <br>
+        
+<button type="button" class="btn btn-secondary" id="bdc" data-toggle='modal' data-target='#myModal4000' style="display: none;">Subir pedido</button>
+<button type="button" class="btn btn-secondary" id="bdc2" data-toggle='modal' data-target='#myModal6000' style="display: none;">Subir pedido</button>
+
+
+<div class="modal fade" id="myModal4000" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Asignar pedido</h4>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <button type="button" class="btn btn-secondary" onclick="escanearCodigo();">Escanear consigna</button><br><br>
+          <label for="">Consigna: </label>
+        <input type="text" id="pp"><br><br>
+        <label for="">Dirección: </label>
+        <input type="text" id="direccionnieva"><br><br>
+        <label for="" id="labelmontonuevo">Monto: </label>
+        <input type="text" id="montonuevo"><br><br>
+        <label for="">Hora de slot:</label>
+        <select name="appttt" id="appttt">
+          <option value="8:00 am">8:00 am</option>
+          <option value="10:00 am">10:00 am</option>
+          <option value="12:00 pm">12:00 pm</option>
+          <option value="02:00 pm">02:00 pm</option>
+          <option value="04:00 pm">04:00 pm</option>
+          <option value="06:00 pm">06:00 pm</option>
+          <option value="08:00 pm">08:00 pm</option>
+        </select> 
+        <br><br>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"  onclick="registroNuevo();" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModalLiverpool" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Inicio de ruta</h4>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <label for="">Tipo de ruta: </label>
+          <select name="tiporutaliv" id="tiporutaliv">
+            <option value="Media ruta">Media ruta</option>
+            <option value="Ruta completa">Ruta completa</option>
+          </select><br><br>
+        <label for="">¿Con cuántos pedidos sales? </label>
+        <input type="text" id="tpedidoslivmod"><br><br>
+        <button type="button" class="btn btn-secondary" id="escanearlp" onclick="escanearCodigo2();">Escanear LP</button><br>
+        <label for="">LP: </label>
+        <input type="text" id="lpruta">
+        <button type="button" class="btn btn-success"  onclick="registroNuevoDirecciones();">Guardar LP</button><br><br>
+        <br><br>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"  onclick="registroNuevoLiv();" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="modal fade" id="myModalOptions" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Opciones</h4>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <label for="">LP: </label>
+          <label for="" id="showlp2"></label><br><br>
+          <button type='button'  class="btn btn-success" data-toggle='modal' data-target='#modalEntregaCliente'>Entregado a petición del cliente</button><br><br>
+          <button  data-toggle='modal' class="btn btn-primary" data-target='#modalDVNE'>Visitado, cliente ausente</button> <br><br>
+          <button  data-toggle='modal' class="btn btn-warning" data-target='#modalCancelaCliente'>Cancelación por cliente</button> <br><br>
+          <button  data-toggle='modal' data-target='#modalRegresaCEDIS' class="btn btn-danger">Producto devuelto a CEDIS</button>
+      </div>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+<div class="modal fade" id="modalEntregaCliente" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Solicitud del cliente</h4>
+      </div>
+      <form action="https://aopack.com.mx/entrega.php" method="post" id="form1" enctype="multipart/form-data" target="dummyframe">
+      <div class="modal-body">
+        <div class="table-responsive">
+          <input type="text" id="lpsoli" name="lpsoli" style="display: none;">
+          <input type="text" id="ubisoli" name="ubisoli" style="display: none;">
+          <input type="text" id="reasonlp" name="reasonlp" style="display: none;" value="Solicitud de entrega del cliente">
+          <label for="">LP: </label>
+          <label for="" id="showlp"></label><br><br>
+          <label for="">Foto de solicitud del cliente: </label>
+          <input type="file" id="myfile1" name="myfile1"><br><br>
+          <label for="">Foto del domicilio: </label>
+          <input type="file" id="myfile2" name="myfile2">
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="submit_form()" class="btn btn-success" data-dismiss="modal">Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalCancelaCliente" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Cancelación del cliente</h4>
+      </div>
+      <form action="https://aopack.com.mx/entrega2.php" method="post" id="form2" enctype="multipart/form-data" target="dummyframe">
+      <div class="modal-body">
+        <div class="table-responsive">
+          <input type="text" id="lpsoli2" name="lpsoli2" style="display: none;">
+          <input type="text" id="ubisoli2" name="ubisoli2" style="display: none;">
+          <input type="text" id="reasonlp2" name="reasonlp2" style="display: none;" value="Cancelación del cliente">
+          <label for="">Foto: </label>
+          <input type="file" id="myfile11" name="myfile11"><br><br>
+          <label for="">Comentarios: </label>
+          <input type="text" id="comentarioscancel" name="comentarioscancel">
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="submit_form2()" class="btn btn-success" data-dismiss="modal">Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalRegresaCEDIS" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Regreso a CEDIS</h4>
+      </div>
+      <form action="https://aopack.com.mx/entrega3.php" method="post" id="form3" enctype="multipart/form-data" target="dummyframe">
+      <div class="modal-body">
+        <div class="table-responsive">
+          <input type="text" id="lpsoli3" name="lpsoli3" style="display: none;">
+          <input type="text" id="ubisoli3" name="ubisoli3" style="display: none;">
+          <input type="text" id="reasonlp3" name="reasonlp3" style="display: none;" value="Regreso a CEDIS">
+          <label for="">Foto: </label>
+          <input type="file" id="myfile111" name="myfile111">
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="submit_form3()" class="btn btn-success" data-dismiss="modal">Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modalDVNE" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Visitado, cliente ausente</h4>
+      </div>
+      <form action="https://aopack.com.mx/entrega4.php" method="post" id="form4" enctype="multipart/form-data" target="dummyframe">
+      <div class="modal-body">
+        <div class="table-responsive">
+          <input type="text" id="lpsoli4" name="lpsoli4" style="display: none;">
+          <input type="text" id="ubisoli4" name="ubisoli4" style="display: none;">
+          <input type="text" id="reasonlp4" name="reasonlp4" style="display: none;" value="Visitado, cliente ausente">
+          <label for="">Foto: </label>
+          <input type="file" id="myfile1111" name="myfile1111" accept="image/*" capture="capture">
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="submit_form4()" class="btn btn-success" data-dismiss="modal">Guardar</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModalLiverpoolRegistro" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Registrar cliente</h4>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <button type="button" class="btn btn-secondary" onclick="escanearTel();">Escanear número telefónico</button><br><br>
+          <label for="">Nombre del cliente: </label>
+          <input type="text" id="namecliliv"><br><br>
+          <label for="">Número telefónico del cliente: </label>
+        <input type="text" id="nocliliv"><br><br>
+        <label for="">¿Qué ruta es? </label>
+        <input type="text" id="nrutacliente"><br><br>
+        <br><br>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"  onclick="registroNuevoLiv2();" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModalLiverpoolFin" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Fin de jornada</h4>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <label for="">¿Cuántos tiros exitosos?: </label>
+          <input type="number" id="tirose"><br><br>
+          <label for="">¿Cuántos tiros rechazados?: </label>
+          <input type="number" id="tirosr"><br><br>
+        <br>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"  onclick="registroNuevoLiv22();" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="myModal6000" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+        <h4 class="modal-title">Asignar pedido</h4>
+      </div>
+      <div class="modal-body">
+        <div class="table-responsive">
+          <label for="">MTR: </label>
+        <input type="text" id="pp2"><br><br>
+        <label for="">No. de piezas: </label>
+      <input type="text" id="npiezas"><br><br>
+        <label for="">Fase: </label>
+        <select name="appt2" id="appt2" onchange="cachefase()">
+          <option value="Fase 1">Fase 1</option>
+          <option value="Fase 2">Fase 2</option>
+          <option value="Fase 3">Fase 3</option>
+        </select><br><br>
+        <label for="">Dirección: </label>
+        <select name="tiendas_c" id="tiendas_c">
+          <option value="HUB V.F. COACALCO">HUB V.F. COACALCO</option>
+          <option value="BA Ecatepec">BA Ecatepec</option>
+          <option value="SC Ecatepec">SC Ecatepec</option>
+          <option value="SC Av Nacional">SC Av Nacional</option>
+          <option value="BA Tecamac">BA Tecamac</option>
+          <option value="BA Heroes tecamac">BA Heroes tecamac</option>
+          <option value="BA Guadalupana">BA Guadalupana</option>
+          <option value="BA Mexiquense">BA Mexiquense</option>
+          <option value="SC Macroplaza">SC Macroplaza</option>
+          <option value="BA Av Dalias">BA Av Dalias</option>
+          <option value="BA Joyas">BA Joyas</option>
+          <option value="BA San Pablo">BA San Pablo</option>
+          <option value="BA Bosques">BA Bosques</option>
+          <option value="BA Ftes del valle">BA Ftes del valle</option>
+          <option value="SC Santa Maria">SC Santa Maria</option>
+          <option value="BD El Dorado Tultepec">BD El Dorado Tultepec</option>
+        </select>
+        <select name="tiendas_e" id="tiendas_e" style="display: none;">
+          <option value="HUB SUPER PLAZA ECATEPEC">HUB SUPER PLAZA ECATEPEC</option>
+          <option value="BA Gobernadora">BA Gobernadora</option>
+          <option value="SC Plaza Aragon">SC Las Américas</option>
+          <option value="BA Plaza Aragon">BA Viento Nuevo</option>
+          <option value="BA San Agustin">BA Palomas</option>
+          <option value="BA Xalostoc">BA Terranova</option>
+          <option value="BA Via Morelos">BA Via Morelos</option>
+          <option value="BA Plaza Ecatepec">BA Plaza Ecatepec</option>
+          <option value="BA Santa Clara">BA Santa Clara</option>
+          <option value="BA Plaza las americas">BA Xalostoc</option>
+          <option value="BA Palomas">BA San Agustin</option>
+          <option value="BA Viento Nuevo">SC Plaza Aragon</option>
+          <option value="BA Terranova">BA Plaza Aragon</option>
+        </select>
+        <select name="tiendas_t" id="tiendas_t" style="display: none;">
+          <option value="HUB PUERTA TEXCOCO">HUB PUERTA TEXCOCO</option>
+          <option value="BA Chicoloapan">BA Chicoloapan</option>
+          <option value="HP Texcoco">HP Texcoco</option>
+          <option value="BA Texcoco">BA Texcoco</option>
+          <option value="BA Chimalhuacan">BA Chimalhuacan</option>
+          <option value="La Aurora">La Aurora</option>
+          <option value="BA Peñon">BA Peñon</option>
+          <option value="Arca de Noe">Arca de Noe</option>
+          <option value="Plaza Chimalhuacan">Plaza Chimalhuacan</option>
+          <option value="Real de Costitlan">Real de Costitlan</option>
+        </select>
+        <select name="tiendas_o" id="tiendas_o" style="display: none;">
+          <option value="HUB ORIENTE">HUB ORIENTE</option>
+          <option value="Cabeza de Juárez">Cabeza de Juárez</option>
+          <option value="Zaragoza">Zaragoza</option>
+          <option value="Sor Juana">Sor Juana</option>
+          <option value="Cd Jardin">Cd Jardin</option>
+          <option value="Pantitlán">Pantitlán</option>
+          <option value="Aeropuerto">Aeropuerto</option>
+          <option value="Balbuena">Balbuena</option>
+          <option value="Portal Centro">Portal Centro</option>
+          <option value="La Viga">La Viga</option>
+          <option value="Doctores">Doctores</option>
+          <option value="Bolivar">Bolivar</option>
+          <option value="Plaza Churubusco">Plaza Churubusco</option>
+        </select>
+        <select name="tiendas_h" id="tiendas_h" style="display: none;">
+          <option value="HUB HORIZONTE">HUB HORIZONTE</option>
+          <option value="BA Valle de Chalco">BA Valle de Chalco</option>
+          <option value="BA Villas de Ayotla">BA Villas de Ayotla</option>
+          <option value="BA de Ayotla">BA de Ayotla</option>
+          <option value="BA Ixtapaluca">BA Ixtapaluca</option>
+          <option value="BA Nicolás Bravo">BA Nicolás Bravo</option>
+          <option value="BA San Buena Aventura">BA San Buena Aventura</option>
+          <option value="WALMART Ixtapaluca">WALMART Ixtapaluca</option>
+          <option value="WALMART Vicente Guerrero">WALMART Vicente Guerrero</option>
+          <option value="BA Cuautzingo">BA Cuautzingo</option>
+          <option value="BA Chalco 2000">BA Chalco 2000</option>
+          <option value="MB Cuahtemoc">MB Cuahtemoc</option>
+          <option value="Portal Chalco">Portal Chalco</option>
+        </select> <br><br>
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="">Transferencia</label>
+          <input class="form-check-input" type="checkbox" id="transferencia">
+        </div>
+        <label for="" id="lorigen" style="display: none;">Lugar de origen: </label>
+        <input type="text" id="origen" style="display: none;">
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="">Medicamento frío</label>
+          <input class="form-check-input" type="checkbox" id="medicamentofrio">
+        </div>
+        <div class="form-check form-switch">
+          <label class="form-check-label" for="">Medicamento seco</label>
+          <input class="form-check-input" type="checkbox" id="medicamentoseco">
+        </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"  onclick="registroNuevo2();" data-dismiss="modal">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+        <input type="button" id="status" name="status" onclick="cstatus();" value="No disponible" style="background-color: red; display: none;"><br>
+        <input type="button" onclick="getPedidos();" id="getpedidosb"  value="Ver pedidos" style="display: none;">&nbsp;&nbsp;<input type="button" id="lasttable" data-toggle='modal' data-target='#myModal' value="Última tabla guardada" style="display: none;">&nbsp;&nbsp;<br>
+        <label for="" id="totalpz1" name="totalpz1" style="display: none;"></label>
+        <label for="" id="totalpz2" name="totalpz2" style="display: none;"></label>
+        <label for="" id="totalmonto1" name="totalmonto1" style="display: none;"></label>
+        <label for="" id="totalmonto2" name="totalmonto2" style="display: none;"></label>
+        <table class="table table-dark table-striped" id="tablache1" style="display: none;">
+          <thead>
+            <tr>
+              <th scope="col">Hora S</th>
+              <th scope="col">Pedido</th>
+              <th scope="col">Status</th>
+              <th scope="col">Foto del ticket</th>
+              <th scope="col">Pedido validado</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyid1">
+          </tbody>
+        </table>
+        <table class="table table-dark table-striped" id="tablache" style="display: none;">
+          <thead>
+            <tr>
+              <th scope="col">Pedido</th>
+              <th scope="col">Status</th>
+              <th scope="col">Foto</th>
+              <th scope="col">Pedido Conciliado</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyid">
+          </tbody>
+        </table>
+        <table class="table table-dark table-striped" id="tablaliv" style="display: none;">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Status</th>
+              <th scope="col">LP</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyliv">
+          </tbody>
+        </table>
+        <button type="button" id="subir_foto" name="subir_foto" class="btn btn-secondary" style="display: none;">Desglose de folios</button> <br>
+        
+        <div class="modal fade" id="myModal" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+                <label for="" id="no_pedido" name="no_pedido"></label>
+                <h4 class="modal-title">Pedido No. <label id="no_consigna"></label></h4>
+              </div>
+              <div class="modal-body">
+                <div class="table-responsive">
+                <table class="table table-dark table-striped" id="tabladesc" style="display: block;">
+                  <thead>
+                    <tr>
+                      <th scope="col">Consig</th>
+                      <th scope="col">Nombre</th>
+                      <th scope="col">Dir</th>
+                      <th scope="col">Tel</th>
+                      <th scope="col">Monto</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyid2">
+                  </tbody>
+                </table>
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="fpedido" name="fpedido" data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="myModalLiv" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+                <label for="" id="no_pedido" name="no_pedido"></label>
+                <h4 class="modal-title">Cliente <label id=""></label></h4>
+              </div>
+              <div class="modal-body">
+                <div class="table-responsive">
+                <table class="table table-dark table-striped" id="tabladescLiv" style="display: block;">
+                  <thead>
+                    <tr>
+                      <th scope="col">ID</th>
+                      <th scope="col">LP</th>
+                      <th scope="col">Tel</th>
+                      <th scope="col">Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyid2Liv">
+                  </tbody>
+                </table>
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="fpedidoliv" name="fpedidoliv" data-dismiss="modal">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="myModal1" role="dialog">
+          <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button> &nbsp; &nbsp;
+                <div class="row">
+                  <div class="col-sm-12">
+                    Nombre: <label for="" id="namecli" name="namecli"></label>
+                  </div>
+                  <div class="col-sm-12">
+                    Teléfono: <label for="" id="telcli" name="telcli" onclick="callNumber()" style="color: blue;"></label>
+                  </div>
+                  <div class="col-sm-12">
+                    Consigna: <label for="" id="no_consigna" name="no_consigna"></label>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-body">
+                <div class="table-responsive">
+                <table class="table table-dark table-striped" id="tabladesc1" style="display: block;">
+                  <thead>
+                    <tr>
+                      <th scope="col">Cant</th>
+                      <th scope="col">Producto</th>
+                      <th scope="col">Monto</th>
+                      <th scope="col">UPC</th>
+                      <th scope="col"><img src="https://img.icons8.com/officexs/16/000000/checked.png"/></th>
+                      <th scope="col"><img src="https://img.icons8.com/fluent/16/000000/sorting-arrows.png"/></th>
+                      <th scope="col"><img src="https://img.icons8.com/android/16/fa314a/cancel-2.png"/></th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyid22">
+                  </tbody>
+                </table>
+                <table class="table table-dark table-striped" id="sustitutos" style="display: block;">
+                  <thead>
+                    <tr>
+                      <th scope="col">Cant</th>
+                      <th scope="col">Producto</th>
+                      <th scope="col">Monto</th>
+                      <th scope="col">UPC</th>
+                      <th scope="col">Borrar fila</th>
+                      <th scope="col">Borrar uno por uno</th>
+                    </tr>
+                  </thead>
+                  <tbody id="tbodyid33">
+                  </tbody>
+                </table>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-success" id="fpedido2" name="fpedido2">Finalizar pedido</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="myModal2" role="dialog">
+          <div class="modal-dialog">
+          <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Agregar producto</h4>
+              </div>
+              <div class="modal-body">
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label" style="display: block;">UPC:</label>
+                  <input type="text" class="form-control" id="artupc" style="width: 70%; display: inline-block;">
+                  <div class="input-group-prepend" style="width: 15%; display: inline-block;">
+                    <div class="input-group-text" onclick="scancodebar()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-upc-scan" viewBox="0 0 16 16">
+                      <path d="M1.5 1a.5.5 0 0 0-.5.5v3a.5.5 0 0 1-1 0v-3A1.5 1.5 0 0 1 1.5 0h3a.5.5 0 0 1 0 1h-3zM11 .5a.5.5 0 0 1 .5-.5h3A1.5 1.5 0 0 1 16 1.5v3a.5.5 0 0 1-1 0v-3a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 1-.5-.5zM.5 11a.5.5 0 0 1 .5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 1 0 1h-3A1.5 1.5 0 0 1 0 14.5v-3a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v3a1.5 1.5 0 0 1-1.5 1.5h-3a.5.5 0 0 1 0-1h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 1 .5-.5zM3 4.5a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7zm2 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-7zm3 0a.5.5 0 0 1 1 0v7a.5.5 0 0 1-1 0v-7z"/>
+                    </svg></div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Nombre del artículo:</label>
+                  <input type="text" class="form-control" id="artname">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Cantidad:</label>
+                  <input type="text" class="form-control" id="cantidad">
+                </div>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Costo:</label>
+                  <input type="text" class="form-control" id="costo">
+                </div>
+                <div class="form-group">
+                  <button type="button" class="btn btn-success" id="sendart" name="sendart">Guardar</button>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" id="volvermodal" name="volvermodal">Volver a la lista</button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div style="display: none;" id="productividad">
+        <h5>Proyecto: </h5>
+        <table class="table table-dark table-striped" id="tablaporcentajes" style="display: block;">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Porcentaje</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyporcentajes">
+          </tbody>
+        </table>
+        <div class="input-group mb-3">
+          <label style="color: white;">Porcentaje total: </label>&nbsp;<label style="color: white;" id="ptotal"></label>&nbsp;&nbsp;&nbsp;<label></label>
+        </div>
+        <table class="table table-dark table-striped" id="tablahorarios" style="display: none;">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Tienda</th>
+              <th scope="col">Horario</th>
+              <th scope="col">Aceptar</th>
+              <th scope="col">Rechazar</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyhorarios">
+          </tbody>
+        </table>
+        <button type="button" class="btn btn-danger" onclick="regresar()">Regresar</button>
+      </div>
+      <div id="pantalla_alta" style="background-image: url('img/pantalla.png'); background-repeat: no-repeat;
+      background-size: 100% 100%; text-align: center;">
+      <br><br><br><br><br><br><br><br><br>
+            <label for="user_login" style="color: white;">Nueva contraseña: </label> <br> <input type="password" placeholder="Contraseña" id="password_alta" name="password_alta"><br><br>
+            <label for="user_login" style="color: white;">Confirmar contraseña: </label> <br> <input type="password" placeholder="Confirmar contraseña" id="confirm_password_alta" name="confirm_password_alta"><br><br>
+            <button id="Btn_guardar_alta">Guardar contraseña</button><br><br>
+      </div>
+      <script type="text/javascript" src="cordova.js"></script>
+      <script type="text/javascript" src="js/index.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous"></script>
+      </script>
+      <footer style="text-align: right;">
+        <div style="background-color: gray;">
+          <img src="img/logorojo.png" alt="" style="width: 100px;"style="background-color: #646464;">
+        </div>
+      </footer>
+    </body>
+</html>
